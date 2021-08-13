@@ -28,7 +28,7 @@ export default function Poems(props) {
 لـسـت انـسـاه طـريـداً عـن جـوار المصطفى ***** لائذاً بالقبة النوراء يشكوا اسفا
 `}
                         ].map((x) => 
-                        <Col><Card >
+                        <Col key={x.name} ><Card key={x.name} >
                             <Card.Body className="text-center" as="h1">
                                  {x.name}
                                  <br/>  
