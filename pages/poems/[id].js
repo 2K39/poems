@@ -47,7 +47,7 @@ export default function One(props) {
                 
                 <h2 style={{direction:'rtl',
                 whiteSpace: "pre-wrap",
-                lineHeight:'25px',
+                lineHeight:'30px',
                 }} className="text-center h6">
                     {poem.content}
                 </h2>
