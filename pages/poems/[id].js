@@ -1,9 +1,9 @@
 import React , {useState ,useRef, useEffect} from 'react'
-import {Container, Row, Col, Button , Alert} from 'react-bootstrap'
+import {Container, Navbar , Nav ,Row, Col, Button , Alert} from 'react-bootstrap'
 import {server }from '../../config/index'
 import { useRouter } from 'next/router'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-
+import { BsArrowLeft } from "react-icons/bs"; 
 export default function One(props) {
     let [firstRender, setFirstRender] = useState(true)
     let [poem , setPoem] = useState({})
@@ -22,16 +22,25 @@ export default function One(props) {
 
     return (
         <Container className="text-left">
+            <Navbar>
+                <Container>
+                    <Nav.Link href="/poems">
+                        <BsArrowLeft style={{color:"black"}}/>
+                    </Nav.Link>
+                </Container>
+            </Navbar>
             <Row>
                 <Col>
-                    <h1 className="mt-3 h2" style={{direction:'rtl'}}>{poem.name}</h1> 
+                    <h1 className="m-3 h2 text-center" style={{direction:'rtl'}}>{poem.name}</h1> 
                 </Col>
             </Row>
             <Row>
                 <Col>
-                <pre style={{direction:'rtl'}} className="text-right h6">
+                <h2 style={{direction:'rtl',
+                whiteSpace: "pre-wrap",
+                lineHeight:'25px'}} className="text-center h6">
                     {poem.content}
-                </pre>
+                </h2>
                 </Col>
             </Row>
           
