@@ -1,7 +1,6 @@
-/* html{
-  background-color: black;
-}
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
 *{
-  background-color: black;
-  color: white;
-} */
+    font-family: 'Amiri', serif;
+    letter-spacing: -2px;
+}
