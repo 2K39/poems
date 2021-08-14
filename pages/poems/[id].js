@@ -1,6 +1,5 @@
 import React , {useState ,useRef, useEffect} from 'react'
 import {Container, Row, Col, Button , Alert} from 'react-bootstrap'
-import Document, { Html, Head, Main, NextScript } from 'next/document'
 import {server }from '../../config/index'
 import { useRouter } from 'next/router'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
