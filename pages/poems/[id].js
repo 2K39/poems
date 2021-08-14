@@ -22,16 +22,17 @@ export default function One(props) {
 
     return (
         <Container className="text-left">
-            <Navbar>
+            <Navbar fixed="top">
                 <Container>
+                
                     <Nav.Link href="/poems">
-                        <BsArrowLeft style={{color:"black"}}/>
+                        <BsArrowLeft className="text-dark h3"/>
                     </Nav.Link>
                 </Container>
             </Navbar>
             <Row>
                 <Col>
-                    <h1 className="m-3 h2 text-center" style={{direction:'rtl'}}>{poem.name}</h1> 
+                    <h1  className="m-3 h2 text-center" style={{direction:'rtl'}}>{poem.name}</h1> 
                 </Col>
             </Row>
             <Row>
