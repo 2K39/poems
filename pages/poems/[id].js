@@ -1,12 +1,13 @@
 import React , {useState ,useRef, useEffect} from 'react'
-import {Container, Navbar , Nav ,Row, Col, Button , Alert} from 'react-bootstrap'
+import {Container,Spinner, Navbar , Nav ,Row, Col, Button , Alert} from 'react-bootstrap'
 import {server }from '../../config/index'
 import { useRouter } from 'next/router'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { BsArrowLeft } from "react-icons/bs"; 
+import Fade from 'react-reveal/Fade';
 export default function One(props) {
     let [firstRender, setFirstRender] = useState(true)
-    let [poem , setPoem] = useState({})
+    let [poem , setPoem] = useState({name:"",content:<Spinner animation="border"/>})
     let router =  useRouter()
     let peomId = router.query
     
@@ -32,16 +33,25 @@ export default function One(props) {
             </Navbar>
             <Row>
                 <Col>
-                    <h1  className="m-3 h2 text-center" style={{direction:'rtl'}}>{poem.name}</h1> 
+                <Fade bottom>
+                    <h1  className="m-3 h2 text-center" style={{direction:'rtl'}}>
+                        {poem.name}
+                    </h1> 
+                    </Fade>
                 </Col>
             </Row>
             <Row>
                 <Col>
+                <Fade bottom>
+
+                
                 <h2 style={{direction:'rtl',
                 whiteSpace: "pre-wrap",
-                lineHeight:'25px'}} className="text-center h6">
+                lineHeight:'25px',
+                }} className="text-center h6">
                     {poem.content}
                 </h2>
+                </Fade>
                 </Col>
             </Row>
           

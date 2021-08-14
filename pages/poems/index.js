@@ -3,7 +3,7 @@ import { Container,Navbar,Nav, Row, Col, Button ,Card, Alert} from 'react-bootst
 import { server }from '../../config/index'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { BsFillHouseFill } from "react-icons/bs";
-
+import Fade from 'react-reveal/Fade';
 export default function Poems(props) {
     let [all , setAll] = useState([])
     useEffect(()=>{
@@ -24,14 +24,19 @@ export default function Poems(props) {
     )
     let Content = () => (
         all.map((x) => 
-        <Col key={x.name} className="m-3"><Card key={x.name} >
-            <Card.Body className="text-center" as="h1">
-               <Card.Title >{x.name}</Card.Title>  
-                  
-                 <Button variant="outline-dark" style={{width:'200px'}} href={`/poems/`+x.id}>أقرء</Button>  
-            </Card.Body>
-        </Card>
-        </Col>)
+        <Col key={x.name} className="m-3">
+            <Fade bottom>
+            <Card key={x.name} >
+         
+                <Card.Body className="text-center" as="h1">
+                    <Card.Title >{x.name}</Card.Title>  
+                        
+                    <Button variant="outline-dark" style={{width:'200px'}} href={`/poems/`+x.id}>أقرء</Button>  
+                </Card.Body>
+            </Card>
+            </Fade>
+        </Col>
+        )
 
     )
 
