@@ -24,10 +24,10 @@ export default function Poems(props) {
                     {
                     
                     all.map((x) => 
-                        <Col key={x.name} ><Card key={x.name} >
+                        <Col key={x.name} className="m-3"><Card key={x.name} >
                             <Card.Body className="text-center" as="h1">
-                                 {x.name}
-                                 <br/>  
+                               <Card.Title>{x.name}</Card.Title>  
+                                  
                                  <Button variant="outline-dark" style={{width:'200px'}} href={`/poems/`+x.id}>أقرء</Button>  
                             </Card.Body>
                         </Card>

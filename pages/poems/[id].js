@@ -24,7 +24,7 @@ export default function One(props) {
         <Container className="text-left">
             <Row>
                 <Col>
-                    <h1 style={{direction:'rtl'}}>{poem.name}</h1> 
+                    <h1 className="mt-3 h2" style={{direction:'rtl'}}>{poem.name}</h1> 
                 </Col>
             </Row>
             <Row>
