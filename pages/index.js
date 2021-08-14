@@ -21,7 +21,8 @@ export default function Home() {
       <h1 className="text-center m-3">
               !مرحبا بكم في موقع اشعار
       </h1>
-      <Button variant="outline-dark" style={{width:'200px'}} href="/poems">أقرء</Button>  
+   
+      <Button className="mt-3" variant="outline-dark" style={{width:'200px'}} href="/poems">أقرء</Button>  
   </Row>
 </Fade>
 
