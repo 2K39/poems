@@ -25,22 +25,23 @@ export default function Poems(props) {
         </Container>
     </Navbar>
     )
-    
-    let Box = ({name, id}) =>   
-    
-    <Col key={name} className="mb-3">
-        <Fade bottom>
-                <Card body key={name} className="text-center" >
-                    <h1>{name}</h1> 
-                    <Link href={`/poems/${id}`}>
+    let CustomButton =({href }) => {
+       return <Link href={href}>
                         <Button variant="outline-dark"
                             className="m-3"
                             style={{width:'200px'}}>
                             أقرء
                         </Button> 
                     </Link>
+    } 
+    let Box = ({name, id}) =>   
+    
+    <Col key={name} className="mb-3">
+        <Fade bottom>
+                <Card body key={name} className="text-center" >
+                    <h1>{name}</h1> 
+                    <CustomButton href={`/poems/${id}`}/>
                 </Card>
-             
             </Fade>
         </Col>
     let Content = () => {
