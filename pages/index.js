@@ -8,11 +8,13 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-  <Container>
-    <LazyHero minHeight="90vh">
+
+    <LazyHero 
+    imageSrc="https://khlijm.com/wp-content/themes/jannah-child/timthumb.php?src=https://khlijm.com/wp-content/uploads/2013/11/karbala-flag-1.jpg&w=500&zc=1&a=c"
+     minHeight="100vh">
       <Fade>
-        <h1 className="m-3 display-2">
-          !مرحبا بكم في موقع اشعار
+        <h1 className="m-3 display-3">
+          مرحبا بكم في موقع اشعار
         </h1>
 
         <Link href="/poems">
@@ -25,6 +27,6 @@ export default function Home() {
         
       </Fade>
     </LazyHero>
-  </Container>
+  
   )
 }
