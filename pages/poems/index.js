@@ -53,7 +53,7 @@ export default function Poems(props) {
         else {
         return(
             <Row lx={2} lg={2}  md={2} sm={1} >
-                { all.map((x) => <Box name={x.name} id={x.id}/>)}
+                { all.map((x) => <Box key={x.name} name={x.name} id={x.id}/>)}
             </Row>)
        
         }
