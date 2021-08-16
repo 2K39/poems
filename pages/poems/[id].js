@@ -28,10 +28,13 @@ export default function One(props) {
         // }, [peomId]);
 
         // clint side routing test
-         useEffect(async () => {
-            const res = await fetch(`${server}/api/${peomId.id}`)
-            let data = await res.json()
-            setPoem(await data) 
+         useEffect(() => {
+             (async function (){
+                const res = await fetch(`${server}/api/${peomId.id}`)
+                let data = await res.json()
+                setPoem(await data)  
+             })()
+          
          } , [peomId.id])
                 
         
