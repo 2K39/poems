@@ -1,9 +1,10 @@
 import React , {useState , useEffect} from 'react'
 import { Container,Navbar,Nav, Row, Col, Button ,Card, Alert} from 'react-bootstrap'
-import { server }from '../../config/index'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { server } from '../../config/index'
 import { BsFillHouseFill } from "react-icons/bs";
 import Fade from 'react-reveal/Fade';
+import Link from 'next/link'
+
 export default function Poems(props) {
     let [all , setAll] = useState([])
     useEffect(()=>{
@@ -15,10 +16,12 @@ export default function Poems(props) {
     let Navigation = () =>  (
     <Navbar className="row">
         <Container>
-            <Navbar.Brand className="h3">أشعار</Navbar.Brand>
-            <Nav.Link href="/">
-                <BsFillHouseFill className="text-dark h3" />
-            </Nav.Link>
+            <Navbar.Brand className="h1">أشعار</Navbar.Brand>
+            <Nav.Item >
+              <Link href="/">
+                  <BsFillHouseFill className="text-dark h3" />
+                </Link>  
+            </Nav.Item>
         </Container>
     </Navbar>
     )
@@ -28,10 +31,16 @@ export default function Poems(props) {
             <Fade bottom>
             <Card key={x.name} >
          
-                <Card.Body className="text-center" as="h1">
-                    <Card.Title >{x.name}</Card.Title>  
-                        
-                    <Button variant="outline-dark" style={{width:'200px'}} href={`/poems/`+x.id}>أقرء</Button>  
+                <Card.Body className="text-center" >
+                    <Card.Title as="h1">{x.name}</Card.Title>  
+                    <Link href={`/poems/${x.id}`}>
+
+                        <Button variant="outline-dark"
+                        className="m-3"
+                        style={{width:'200px'}}
+                        >أقرء</Button> 
+
+                    </Link>
                 </Card.Body>
             </Card>
             </Fade>

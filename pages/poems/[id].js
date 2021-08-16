@@ -1,42 +1,60 @@
-import React , {useState ,useRef, useEffect} from 'react'
-import {Container,Spinner, Navbar , Nav ,Row, Col, Button , Alert} from 'react-bootstrap'
+import React , {useState , useEffect} from 'react'
+import {Container, Spinner, Navbar }from 'react-bootstrap'
+import {Nav ,Row,Col,Button , Alert} from 'react-bootstrap'
 import {server }from '../../config/index'
 import { useRouter } from 'next/router'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { BsArrowLeft } from "react-icons/bs"; 
 import Fade from 'react-reveal/Fade';
+import LazyHero from 'react-lazy-hero';
+import Link from 'next/link'
+
 export default function One(props) {
     let [firstRender, setFirstRender] = useState(true)
-    let [poem , setPoem] = useState({name:"",content:<Spinner animation="border"/>})
+    let [poem , setPoem] = useState({name:"",content:<LazyHero>
+        <Spinner animation="border"/>
+    </LazyHero>
+})
     let router =  useRouter()
     let peomId = router.query
     
-        useEffect( async() => {
-            if ( firstRender == false){
-                console.log(await peomId.id)
-                const res = await fetch(`${server}/api/${peomId.id}`)
-                let data = await res.json()
-                setPoem(await data) 
-            }
-            setFirstRender(false);
-        }, [peomId]);
+        // useEffect( async() => {
+        //     if ( firstRender == false){
+        //         console.log(await peomId.id)
+        //         const res = await fetch(`${server}/api/${peomId.id}`)
+        //         let data = await res.json()
+        //         setPoem(await data) 
+        //     }
+        //     setFirstRender(false);
+        // }, [peomId]);
+
+        // clint side routing test
+         useEffect(async () => {
+            const res = await fetch(`${server}/api/${peomId.id}`)
+            let data = await res.json()
+            setPoem(await data) 
+         } , [peomId.id])
+                
+        
+        
 
     return (
         <Container className="text-left">
             <Navbar fixed="top">
                 <Container>
-                
-                    <Nav.Link href="/poems">
-                        <BsArrowLeft className="text-dark h3"/>
-                    </Nav.Link>
+                    <Nav.Item >
+                        <Link href="/poems">
+                            <BsArrowLeft className="text-dark h3"/>
+                        </Link>
+                    </Nav.Item>
                 </Container>
             </Navbar>
             <Row>
                 <Col>
                 <Fade bottom>
-                    <h1  className="m-3 h2 text-center" style={{direction:'rtl'}}>
+                    <h1 className="display-4 m-3 p-3 h2 text-center" style={{direction:'rtl'}}>
                         {poem.name}
                     </h1> 
+                  
                     </Fade>
                 </Col>
             </Row>
@@ -47,8 +65,7 @@ export default function One(props) {
                 
                 <h2 style={{direction:'rtl',
                 whiteSpace: "pre-wrap",
-                lineHeight:'30px',
-                }} className="text-center h6">
+                }} className="text-center h2 lh-base">
                     {poem.content}
                 </h2>
                 </Fade>
