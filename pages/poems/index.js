@@ -1,12 +1,12 @@
 import React , {useState , useEffect} from 'react'
-import { Container,Navbar,Nav, Row, Col, Button ,Card, Alert} from 'react-bootstrap'
+import { Container,Navbar,Nav,Spinner, Row, Col, Button ,Card, Alert} from 'react-bootstrap'
 import { server } from '../../config/index'
 import { BsFillHouseFill } from "react-icons/bs";
 import Fade from 'react-reveal/Fade';
 import Link from 'next/link'
-
+import LazyHero from 'react-lazy-hero';
 export default function Poems(props) {
-    let [all , setAll] = useState([])
+    let [all , setAll] = useState('empty')
     useEffect(()=>{
         fetch(`${server}/api/all`)
         .then(response => response.json())
@@ -25,38 +25,43 @@ export default function Poems(props) {
         </Container>
     </Navbar>
     )
-    let Content = () => (
-        all.map((x) => 
-        <Col key={x.name} className="m-3">
-            <Fade bottom>
-            <Card key={x.name} >
-         
-                <Card.Body className="text-center" >
-                    <Card.Title as="h1">{x.name}</Card.Title>  
-                    <Link href={`/poems/${x.id}`}>
-
+    
+    let Box = ({name, id}) =>   
+    
+    <Col key={name} className="mb-3">
+        <Fade bottom>
+                <Card body key={name} className="text-center" >
+                    <h1>{name}</h1> 
+                    <Link href={`/poems/${id}`}>
                         <Button variant="outline-dark"
-                        className="m-3"
-                        style={{width:'200px'}}
-                        >أقرء</Button> 
-
+                            className="m-3"
+                            style={{width:'200px'}}>
+                            أقرء
+                        </Button> 
                     </Link>
-                </Card.Body>
-            </Card>
+                </Card>
+             
             </Fade>
         </Col>
-        )
-
-    )
+    let Content = () => {
+        if (all == 'empty'){
+            return <LazyHero  isCentered={true}>
+                <Spinner animation="border"/>
+            </LazyHero> 
+        }
+        else {
+        return(
+            <Row lx={2} lg={2}  md={2} sm={1} >
+                { all.map((x) => <Box name={x.name} id={x.id}/>)}
+            </Row>)
+       
+        }
+    }
 
     return (
         <Container>
-
             <Navigation/>
-
-            <Row>
-                <Content/>
-            </Row>
+            <Content/>
         </Container>
     )
 }

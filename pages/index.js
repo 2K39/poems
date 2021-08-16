@@ -14,15 +14,15 @@ export default function Home() {
         <h1 className="m-3 display-2">
           !مرحبا بكم في موقع اشعار
         </h1>
+
         <Link href="/poems">
           <Button
             style={{width:'200px'}} 
-            className="m-3"
-            variant="outline-dark"
-            >
+            className="m-3"variant="outline-dark">
             أقرء
           </Button>  
         </Link>
+        
       </Fade>
     </LazyHero>
   </Container>
