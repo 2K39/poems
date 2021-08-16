@@ -17,28 +17,13 @@ export default function One(props) {
     let router =  useRouter()
     let peomId = router.query
     
-        // useEffect( async() => {
-        //     if ( firstRender == false){
-        //         console.log(await peomId.id)
-        //         const res = await fetch(`${server}/api/${peomId.id}`)
-        //         let data = await res.json()
-        //         setPoem(await data) 
-        //     }
-        //     setFirstRender(false);
-        // }, [peomId]);
-
-        // clint side routing test
-         useEffect(() => {
-             (async function (){
-                const res = await fetch(`${server}/api/${peomId.id}`)
-                let data = await res.json()
-                setPoem(await data)  
-             })()
-          
-         } , [peomId.id])
-                
-        
-        
+    useEffect(() => {
+        (async function (){
+            const res = await fetch(`${server}/api/${peomId.id}`)
+            let data = await res.json()
+            setPoem(await data)  
+        })()
+    },[peomId.id])
 
     return (
         <Container className="text-left">
@@ -57,21 +42,18 @@ export default function One(props) {
                     <h1 className="display-4 m-3 p-3 h2 text-center" style={{direction:'rtl'}}>
                         {poem.name}
                     </h1> 
-                  
                     </Fade>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                <Fade bottom>
-
-                
-                <h2 style={{direction:'rtl',
-                whiteSpace: "pre-wrap",
-                }} className="text-center h2 lh-base">
-                    {poem.content}
-                </h2>
-                </Fade>
+                    <Fade bottom>
+                        <h2 style={{direction:'rtl',
+                        whiteSpace: "pre-wrap",
+                        }} className="text-center h2 lh-base">
+                            {poem.content}
+                        </h2>
+                    </Fade>
                 </Col>
             </Row>
           
